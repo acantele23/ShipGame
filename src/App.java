@@ -8,7 +8,10 @@ public class App extends PApplet
     private ArrayList<Missile> allMissiles = new ArrayList<Missile>();
     private ArrayList<Rock> allRocks = new ArrayList<Rock>();
     private long rockBirthTimer =0;
-   // private Rock r;
+    private ArrayList<Emitter> explosions = new ArrayList<Emitter>();
+
+    private Emitter e;
+
 
     public static void main (String[] args)
     {
@@ -22,7 +25,7 @@ public class App extends PApplet
         size(800,600, P2D);
 
         player = new Ship(width/2, height-100);
-        //r = new Rock(width/2,height/2,90,5);
+
         for (int i=0; i<5; i++)
         {
             allRocks.add(spawnRock());
@@ -54,6 +57,10 @@ public class App extends PApplet
         {
             allRocks.add(spawnRock());
             rockBirthTimer =(long)( System.currentTimeMillis()+(Math.random()*2000)+1000);
+        }
+        for(Emitter e:explosions)
+        {
+            e.display(this);
         }
 
     }
